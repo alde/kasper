@@ -1,8 +1,12 @@
 ?PHONY: clean
 
 clean:
-	rm repl
+	rm parsing || true
 
+mpc.h:
+	curl --no-clobber -o mpc.h https://raw.githubusercontent.com/orangeduck/mpc/master/mpc.h
+mpc.c:
+	curl --no-clobber -o mpc.c https://raw.githubusercontent.com/orangeduck/mpc/master/mpc.c
 
-repl: clean
-	cc -std=c99 -Wall main.c -ledit -o repl
+parsing: clean mpc.h mpc.c
+	cc -std=c99 -Wall parsing.c mpc.c -ledit -lm -o parsing

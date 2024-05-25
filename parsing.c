@@ -17,12 +17,13 @@ char* readline(char* prompt) {
 }
 
 void add_history(char* unused) {}
-#else
-#include <editline/readline.h>
-#ifndef __APPLE__
-#include <editline/history.h>
 #endif
+
+#ifdef __linux__
+#include <readline/readline.h>
+#include <readline/history.h>
 #endif
+
 static char* VERSION = "0.0.1";
 
 int main(int argc, char** argv) {

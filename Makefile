@@ -9,4 +9,4 @@ mpc.c:
 	curl --no-clobber -o mpc.c https://raw.githubusercontent.com/orangeduck/mpc/master/mpc.c
 
 parsing: clean mpc.h mpc.c
-	cc -std=c99 -Wall parsing.c mpc.c -ledit -lm -o parsing
+	cc -std=c99 -Wall parsing.c mpc.c -lreadline -lm -o parsing
